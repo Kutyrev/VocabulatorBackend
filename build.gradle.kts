@@ -4,6 +4,8 @@ val logback_version: String by project
 val postgree_version: String by project
 val hikari_version: String by project
 val exposed_version: String by project
+val jackson_version: String by project
+val auth_version: String by project
 
 plugins {
     kotlin("jvm") version "1.8.0"
@@ -26,9 +28,9 @@ repositories {
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
-    implementation("io.ktor:ktor-jackson:$ktor_version")
-    implementation("io.ktor:ktor-auth:$ktor_version")
-    implementation("io.ktor:ktor-auth-jwt:$ktor_version")
+    implementation("io.ktor:ktor-jackson:$jackson_version")
+    implementation("io.ktor:ktor-auth:$auth_version")
+    implementation("io.ktor:ktor-auth-jwt:$auth_version")
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
