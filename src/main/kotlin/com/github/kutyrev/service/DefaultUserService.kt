@@ -32,9 +32,9 @@ class DefaultUserService : UserService {
     private fun rowToUser(row: ResultRow?): User? {
         return if (row == null) null
         else User(
-            row[UserTable.id],
-            row[UserTable.login],
-            row[UserTable.password]
+            id = row[UserTable.id],
+            login = row[UserTable.login],
+            password = row[UserTable.password]
         )
     }
 }
