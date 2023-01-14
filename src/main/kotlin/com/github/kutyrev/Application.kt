@@ -1,10 +1,14 @@
 package com.github.kutyrev
 
 import com.github.kutyrev.database.DatabaseFactory
-import com.github.kutyrev.plugins.configureRouting
+import com.github.kutyrev.repository.DefaultUserRepository
+import com.github.kutyrev.routes.authRoutes
+import com.github.kutyrev.service.DefaultUserService
+import io.ktor.serialization.jackson.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.server.plugins.contentnegotiation.*
 
 
 fun main() {
@@ -14,5 +18,8 @@ fun main() {
 
 fun Application.module() {
     DatabaseFactory.init()
-    configureRouting()
+    install(ContentNegotiation) {
+        jackson()
+    }
+    authRoutes(DefaultUserRepository(DefaultUserService()))
 }
